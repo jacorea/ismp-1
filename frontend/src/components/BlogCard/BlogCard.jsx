@@ -1,7 +1,7 @@
 import React from 'react';
 import Styled from 'styled-components';
 import theme from '../../styles/theme';
-import { Card, Image } from 'semantic-ui-react';
+import { Card, Image, Grid } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const StyledImage = Styled(Image)`
@@ -36,8 +36,6 @@ const StyledBodyText = Styled.p`
 
 const StyledCard = Styled(Card)`
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  height: 443px;
-  width: 330px;
   background: #FBFBFB;
 `;
 
@@ -53,19 +51,21 @@ const StyledLink = Styled(Link)`
   }
 `;
 
-const StyledContentBackground = Styled(Card.Content)`
-background: #FBFBFB;
-`;
-
 const BlogCard = ({ blogImgurl, blogTitle, blogDescription }) => {
   return (
-    <StyledCard>
+    <StyledCard style={{ width: '330px', height: '443px' }}>
       <StyledImage src={blogImgurl} alt="blog category image" />
       <Card.Content style={{ background: '#fbfbfb' }}>
-        <StyledLink to="/">
-          <StyledSecH3>{blogTitle}</StyledSecH3>
-        </StyledLink>
-        <StyledBodyText>{blogDescription}</StyledBodyText>
+        <Grid>
+          <Grid.Row textAlign="center" width={16}>
+            <StyledLink to="/">
+              <StyledSecH3>{blogTitle}</StyledSecH3>
+            </StyledLink>
+          </Grid.Row>
+          <Grid.Row width={16}>
+            <StyledBodyText>{blogDescription}</StyledBodyText>
+          </Grid.Row>
+        </Grid>
       </Card.Content>
     </StyledCard>
   );

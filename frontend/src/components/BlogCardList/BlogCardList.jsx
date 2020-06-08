@@ -28,10 +28,28 @@ const StyledLink = Styled(Link)`
   }
 `;
 
-const StyledContainer = Styled.div`
-  margin: 2em 0;
-  padding: 0 13.5%;
-`;
+//function to remove html tags from
+const removeHtmlTags = str => {
+  if (str === null || str === '') {
+    return false;
+  } else {
+    str = str.toString();
+    return str.replace(/(<([^>]+)>)/gi, '');
+  }
+};
+
+const limitWordDisplay = (str, wordLimit) => {
+  let description = removeHtmlTags(str)
+    .split(' ')
+    .slice(0, wordLimit)
+    .join(' ');
+  return `${description}`;
+};
+
+const isVideoOrImage = str => {
+  //have string
+  //need to check end of string to see if contains jpeg, jpg, png,
+};
 
 const BlogCardList = ({ blogHeader, linkText, cardInfo }) => {
   const cards = !cardInfo
@@ -40,9 +58,9 @@ const BlogCardList = ({ blogHeader, linkText, cardInfo }) => {
         return (
           <Grid.Column computer={5} mobile={16} tablet={7} key={card.id}>
             <BlogCard
-              blogImgurl={card.blogpost.media_url}
-              blogTitle={card.title_content}
-              blogDescription={card.body_content}
+              blogImgurl={removeHtmlTags(card.blogpost.media_url)}
+              blogTitle={removeHtmlTags(card.title_content)}
+              blogDescription={limitWordDisplay(card.body_content, 10)}
             />
           </Grid.Column>
         );
