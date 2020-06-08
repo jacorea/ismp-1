@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Styled from 'styled-components';
 import Subscribe from 'components/Subscribe';
 import { Link, useParams } from 'react-router-dom';
@@ -6,6 +6,7 @@ import HeroImage from 'components/HeroImage/HeroImage';
 import theme from '../../styles/theme';
 import { Blogposts } from '../../utils/agent';
 import { useTranslation } from 'react-i18next';
+import BlogCardList from 'components/BlogCardList/BlogCardList';
 
 // TODO: Just testing things out
 const MentorContainer = Styled.div`
@@ -26,6 +27,11 @@ const DuoContainer = Styled.div`
   grid-template-columns: 49% 49%;
   grid-gap: 2%;
   align-items: flex-start;
+  margin: 2em 0;
+  padding: 0 13.5%;
+`;
+
+const BlogCardContainer = Styled.div`
   margin: 2em 0;
   padding: 0 13.5%;
 `;
@@ -73,29 +79,47 @@ const Home = () => {
   const { t } = useTranslation('home');
 
   // console.log(useParams);
-  const [featuredBlogs, setFeaturedBlogs] = useState([
-    {
-      title_content: 'placeholder',
-      body_content: 'something'
-    },
-    {
-      title_content: 'placeholder 2',
-      body_content: 'something'
-    },
-    {
-      title_content: 'placeholder 3',
-      body_content: 'something'
-    }
-  ]);
+  // const [featuredBlogs, setFeaturedBlogs] = useState([
+  //   {
+  //     title_content: 'placeholder',
+  //     body_content: 'something'
+  //   },
+  //   {
+  //     title_content: 'placeholder 2',
+  //     body_content: 'something'
+  //   },
+  //   {
+  //     title_content: 'placeholder 3',
+  //     body_content: 'something'
+  //   }
+  // ]);
 
-  Blogposts.getFeatured().then(data => {
-    // TODO: use setFeaturedBlogs to update featuredBlogs from the backend data
-    // make sure to only update if it is in the initial state, otherwise it will
-    // cause an inifinite loop
-    if (featuredBlogs[0].title_content !== data[0].title_content) {
-      setFeaturedBlogs(data);
-    }
-  });
+  const [featuredBlogs, setFeaturedBlogs] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const blogInfo = async () => {
+      try {
+        const blogCardData = await Blogposts.getFeatured().then(
+          response => response
+        );
+        setIsLoading(false);
+        setFeaturedBlogs(blogCardData);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    blogInfo();
+  }, []);
+  // Blogposts.getFeatured().then(data=>console.log(data[0].title_content))
+  // Blogposts.getFeatured().then(data => {
+  //   // TODO: use setFeaturedBlogs to update featuredBlogs from the backend data
+  //   // make sure to only update if it is in the initial state, otherwise it will
+  //   // cause an inifinite loop
+  //   if (featuredBlogs[0].title_content !== data[0].title_content) {
+  //     setFeaturedBlogs(data);
+  //   }
+  // });
 
   return (
     <>
@@ -126,10 +150,10 @@ const Home = () => {
         <StyledLink to="/">view all</StyledLink>
       </TitleContainer>
 
-      <TitleContainer>
+      {/* <TitleContainer>
         <SubTitle>Featured Blog Articles</SubTitle>
         <StyledLink to="/">view all</StyledLink>
-      </TitleContainer>
+      </TitleContainer> 
 
       <ul>
         {featuredBlogs.map((blog, index) => (
@@ -137,7 +161,15 @@ const Home = () => {
             Title: {blog.title_content}, Description {blog.body_content}
           </li>
         ))}
-      </ul>
+      </ul> */}
+
+      <BlogCardContainer>
+        <BlogCardList
+          blogHeader="Featured Blog Articles"
+          cardInfo={isLoading ? null : featuredBlogs}
+        />
+      </BlogCardContainer>
+
       <Subscribe />
     </>
   );

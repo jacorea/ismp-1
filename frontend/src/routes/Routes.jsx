@@ -10,6 +10,7 @@ class Routes extends Component {
         <Switch>
           <Suspense fallback={<Spinner />}>
             <Route exact path="/" component={RouteEnum.HOME} />
+            <Route exact path="/blog" component={RouteEnum.BLOG} />
             <Route exact path="/edit-blog" component={RouteEnum.EDIT_BLOG} />
             <Route exact path="/blog-type" component={RouteEnum.BLOG_TYPE} />
             <Route
