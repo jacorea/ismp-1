@@ -1,7 +1,7 @@
 import React from 'react';
 import Styled from 'styled-components';
 import theme from '../../styles/theme';
-import { Card, Image, Grid } from 'semantic-ui-react';
+import { Card, Image, Embed } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const StyledImage = Styled(Image)`
@@ -51,21 +51,33 @@ const StyledLink = Styled(Link)`
   }
 `;
 
-const BlogCard = ({ blogImgurl, blogTitle, blogDescription }) => {
+const VideoOrImage = (imgUrl, videoUrl) => {
+  if (imgUrl !== null) {
+    return <StyledImage src={imgUrl} alt="blogCategory Image" />;
+  } else {
+    let idPosition = videoUrl.indexOf('=');
+    let video = videoUrl.substring(idPosition + 1);
+    return (
+      <Embed
+        id={video}
+        active={true}
+        aspectRatio="4:3"
+        placeholder="/images/image-16by9.png"
+        source="youtube"
+      />
+    );
+  }
+};
+
+const BlogCard = ({ blogImgurl, blogTitle, blogDescription, blogVideo }) => {
   return (
     <StyledCard style={{ width: '330px', height: '443px' }}>
-      <StyledImage src={blogImgurl} alt="blog category image" />
+      {VideoOrImage(blogImgurl, blogVideo)}
       <Card.Content style={{ background: '#fbfbfb' }}>
-        <Grid>
-          <Grid.Row textAlign="center" width={16}>
-            <StyledLink to="/">
-              <StyledSecH3>{blogTitle}</StyledSecH3>
-            </StyledLink>
-          </Grid.Row>
-          <Grid.Row width={16}>
-            <StyledBodyText>{blogDescription}</StyledBodyText>
-          </Grid.Row>
-        </Grid>
+        <StyledLink to="/">
+          <StyledSecH3>{blogTitle}</StyledSecH3>
+        </StyledLink>
+        <StyledBodyText>{blogDescription}</StyledBodyText>
       </Card.Content>
     </StyledCard>
   );
