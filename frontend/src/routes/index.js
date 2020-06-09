@@ -11,10 +11,13 @@ import Blogpost from '../pages/Blogs/Blogpost';
 import Terms from '../pages/Legal/Terms';
 import Privacy from '../pages/Legal/Privacy';
 import Blog from '../pages/Blog/Blog';
+import Leadership from '../pages/Leadership/Leadership';
+import BlogList from 'pages/Blogs/BlogListPage';
 
 export const HOME = Home;
 export const EDIT_BLOG = EditBlog;
 export const BLOG_TYPE = BlogType;
+export const BLOG_LIST = BlogList;
 export const APPLICATION_FORM = ApplicationForm;
 export const MENTORS = Mentors;
 export const PROGRAM = Program;
@@ -29,3 +32,4 @@ export const BLOGPOST = Blogpost;
 export const PRIVACY = Privacy;
 export const TERMS = Terms;
 export const BLOG = Blog;
+export const LEADERSHIP = Leadership;

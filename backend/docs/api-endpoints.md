@@ -24,35 +24,32 @@ Sample Response:
 
 
     {
-    "count": 10,
+    "count": 9,
     "next": null,
     "previous": "http://localhost:8000/api/v1/topic/",
     "results": [
         {
-            "id": 5,
-            "blogpost": [],
-            "name": "American society/societal norms"
-        },
-        {
             "id": 4,
             "blogpost": [],
-            "name": "productivity tips"
+            "name": "productivity tips",
+            "description": "Still waiting on a description for this."
         },
         {
             "id": 3,
             "blogpost": [],
-            "name": "adjusting to the US"
+            "name": "Transitioning to America",
+            "description": "We will cover topics like safety tips, American culture, and advice for making new friends to help make your transition to America go as smoothly as possible!"
         },
         {
             "id": 2,
             "blogpost": [
                 {
                     "id": 2,
-                    "media_url": "http://www.example.com",
+                    "media_url": "https://wallpaperplay.com/walls/full/a/5/8/199352.jpg",
                     "author": {
                         "id": 2,
-                        "created_at": "2020-06-07T05:16:11.096872Z",
-                        "updated_at": "2020-06-07T05:16:11.096913Z",
+                        "created_at": "2020-06-08T05:28:26.619684Z",
+                        "updated_at": "2020-06-08T05:28:26.619709Z",
                         "bio": "",
                         "image": "",
                         "user": 2
@@ -63,6 +60,7 @@ Sample Response:
                         {
                             "id": 2,
                             "name": "housing tips",
+                            "description": "Still waiting on a description for this.",
                             "blogpost": [
                                 2
                             ]
@@ -71,18 +69,19 @@ Sample Response:
                     "tag_set": []
                 }
             ],
-            "name": "housing tips"
+            "name": "housing tips",
+            "description": "Still waiting on a description for this."
         },
         {
             "id": 1,
             "blogpost": [
                 {
                     "id": 1,
-                    "media_url": "http://www.google.com",
+                    "media_url": "https://www.youtube.com/watch?v=9fJEFi3ccwI",
                     "author": {
                         "id": 1,
-                        "created_at": "2020-06-07T05:16:11.085974Z",
-                        "updated_at": "2020-06-07T05:16:11.086002Z",
+                        "created_at": "2020-06-08T05:28:26.606828Z",
+                        "updated_at": "2020-06-08T05:28:26.606859Z",
                         "bio": "",
                         "image": "",
                         "user": 1
@@ -92,7 +91,8 @@ Sample Response:
                     "topic_set": [
                         {
                             "id": 1,
-                            "name": "mastering english",
+                            "name": "English Training: Writing",
+                            "description": "English is difficult to master, especially in the university setting.  We will cover basic and advance English writing techniques such as essay organization, professional email writing, and common grammar mistakes to help you succeed in your classes and research!",
                             "blogpost": [
                                 1
                             ]
@@ -101,7 +101,8 @@ Sample Response:
                     "tag_set": []
                 }
             ],
-            "name": "mastering english"
+            "name": "English Training: Writing",
+            "description": "English is difficult to master, especially in the university setting.  We will cover basic and advance English writing techniques such as essay organization, professional email writing, and common grammar mistakes to help you succeed in your classes and research!"
         }
     ]
     }
@@ -199,75 +200,97 @@ POST - creates a new blogpostcontent. Use this when creating a post for the firs
     "results": [
         {
             "id": 3,
-            "language": "en",
-            "title_content": "english training",
-            "body_content": "<p>talk to people</p>",
-            "created_at": "2020-05-07T00:00:00Z",
-            "updated_at": "2020-05-07T00:00:00Z",
-            "publish_at": "2020-06-02T18:04:44.296110Z",
-            "is_draft": false,
             "blogpost": {
                 "id": 3,
-                "media_url": "http://www.sample.com",
-                "slug": "",
-                "is_featured": false,
+                "media_url": "https://www.youtube.com/watch?v=8G89StDuGe4",
                 "author": {
                     "id": 1,
-                    "created_at": "2020-06-07T05:16:11.085974Z",
-                    "updated_at": "2020-06-07T05:16:11.086002Z",
+                    "created_at": "2020-06-07T17:11:40.468702Z",
+                    "updated_at": "2020-06-07T17:11:40.468726Z",
                     "bio": "",
                     "image": "",
                     "user": 1
-                }
-            }
+                },
+                "slug": "",
+                "is_featured": false,
+                "topic_set": [],
+                "tag_set": []
+            },
+            "title_content": "english training",
+            "body_content": "<p>talk to people</p>",
+            "language": "en",
+            "is_draft": false,
+            "created_at": "2020-05-07T00:00:00Z",
+            "updated_at": "2020-05-07T00:00:00Z",
+            "publish_at": "2020-06-02T18:04:44.296110Z"
         },
         {
             "id": 2,
-            "language": "en",
-            "title_content": "test blogpost with html",
-            "body_content": "<div>hello world</div>",
-            "created_at": "2020-05-07T00:00:00Z",
-            "updated_at": "2020-05-07T00:00:00Z",
-            "publish_at": null,
-            "is_draft": true,
             "blogpost": {
                 "id": 2,
-                "media_url": "http://www.example.com",
-                "slug": "",
-                "is_featured": false,
+                "media_url": "https://wallpaperplay.com/walls/full/a/5/8/199352.jpg",
                 "author": {
                     "id": 2,
-                    "created_at": "2020-06-07T05:16:11.096872Z",
-                    "updated_at": "2020-06-07T05:16:11.096913Z",
+                    "created_at": "2020-06-07T17:11:40.478442Z",
+                    "updated_at": "2020-06-07T17:11:40.478467Z",
                     "bio": "",
                     "image": "",
                     "user": 2
-                }
-            }
+                },
+                "slug": "",
+                "is_featured": false,
+                "topic_set": [
+                    {
+                        "id": 2,
+                        "name": "housing tips",
+                        "blogpost": [
+                            2
+                        ]
+                    }
+                ],
+                "tag_set": []
+            },
+            "title_content": "test blogpost with html",
+            "body_content": "<div>hello world</div>",
+            "language": "en",
+            "is_draft": true,
+            "created_at": "2020-05-07T00:00:00Z",
+            "updated_at": "2020-05-07T00:00:00Z",
+            "publish_at": null
         },
         {
             "id": 1,
-            "language": "en",
-            "title_content": "my blogpost",
-            "body_content": "hello world",
-            "created_at": "2020-05-07T00:00:00Z",
-            "updated_at": "2020-05-07T00:00:00Z",
-            "publish_at": "2020-06-02T18:04:44.296110Z",
-            "is_draft": false,
             "blogpost": {
                 "id": 1,
-                "media_url": "http://www.google.com",
-                "slug": "",
-                "is_featured": true,
+                "media_url": "https://www.youtube.com/watch?v=9fJEFi3ccwI",
                 "author": {
                     "id": 1,
-                    "created_at": "2020-06-07T05:16:11.085974Z",
-                    "updated_at": "2020-06-07T05:16:11.086002Z",
+                    "created_at": "2020-06-07T17:11:40.468702Z",
+                    "updated_at": "2020-06-07T17:11:40.468726Z",
                     "bio": "",
                     "image": "",
                     "user": 1
-                }
-            }
+                },
+                "slug": "",
+                "is_featured": true,
+                "topic_set": [
+                    {
+                        "id": 1,
+                        "name": "mastering english",
+                        "blogpost": [
+                            1
+                        ]
+                    }
+                ],
+                "tag_set": []
+            },
+            "title_content": "my blogpost",
+            "body_content": "hello world",
+            "language": "en",
+            "is_draft": false,
+            "created_at": "2020-05-07T00:00:00Z",
+            "updated_at": "2020-05-07T00:00:00Z",
+            "publish_at": "2020-06-02T18:04:44.296110Z"
         }
     ]
     }

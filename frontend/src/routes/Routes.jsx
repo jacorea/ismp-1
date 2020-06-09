@@ -2,6 +2,7 @@ import React, { Component, Suspense } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import * as RouteEnum from './index';
 import Spinner from '../components/Spinner/Spinner.component';
+import { blogTestData } from '../pages/Blogs/BlogListPage';
 
 class Routes extends Component {
   render() {
@@ -11,6 +12,12 @@ class Routes extends Component {
           <Suspense fallback={<Spinner />}>
             <Route exact path="/" component={RouteEnum.HOME} />
             <Route exact path="/blog" component={RouteEnum.BLOG} />
+            <Route
+              exact
+              path="/blog-list"
+              // TODO: Need to grab list of blogposts from backend, currently using hardcoded data
+              children={<RouteEnum.BLOG_LIST blogListData={blogTestData} />}
+            />
             <Route exact path="/edit-blog" component={RouteEnum.EDIT_BLOG} />
             <Route exact path="/blog-type" component={RouteEnum.BLOG_TYPE} />
             <Route
@@ -24,6 +31,7 @@ class Routes extends Component {
               component={RouteEnum.APPLICATION_FORM_SUCCESS}
             />
             <Route exact path="/mentors" component={RouteEnum.MENTORS} />
+            <Route exact path="/leadership" component={RouteEnum.LEADERSHIP} />
             <Route exact path="/program" component={RouteEnum.PROGRAM} />
             <Route exact path="/about" component={RouteEnum.ABOUT} />
             <Route exact path="/stories" component={RouteEnum.STORIES} />
